@@ -1,0 +1,54 @@
+version: '0.1.0'
+
+index:
+  name: movies
+  prefix: movie
+  storage_type: json
+
+fields:
+    - name: id
+      type: numeric
+    - name: original_title
+      type: text
+    - name: original_language
+      type: tag
+      attrs:
+        sortable: true
+    - name: overview
+      type: text
+    - name: genres
+      type: tag
+      path: $.genres.*
+    - name: popularity
+      type: numeric
+      attrs:
+        sortable: true
+    - name: runtime
+      type: numeric
+      attrs:
+        sortable: true
+    - name: tagline
+      type: text
+    - name: budget
+      type: numeric
+      attrs:
+        sortable: true
+    - name: revenue
+      type: numeric
+      attrs:
+        sortable: true
+    - name: vote_count
+      type: numeric
+      attrs:
+        sortable: true
+    - name: vote_average
+      type: numeric
+      attrs:
+        sortable: true
+    - name: embedding
+      type: vector
+      attrs:
+        algorithm: flat
+        dims: 1536
+        distance_metric: cosine
+        datatype: float32

@@ -42,7 +42,35 @@ pip install -r requirements.txt
 ```
 
 
+
 ### Using the project
+
+#### Update Config
+
+Make sure you update the app.config file. You need a open ai api key to update the config.
+```
+vi app.config
+```
+
+#### Load Data
+
+Load the data into redis with embeddings and create index 
+The data file is hosted in GCP bucket
+
+```bash
+curl -L -o utils/data_with_embeddings.csv.gz https://storage.googleapis.com/okon-datasets/data_with_embeddings.csv.gz
+```
+
+```bash
+gunzip utils/data_with_embeddings.csv.gz
+```
+
+```python
+python utils/load_redis.py 
+```
+#### Run application
+
+Run the UI
 
 ```bash
 streamlit run app/1_🔍_Find_My_Movies.py
